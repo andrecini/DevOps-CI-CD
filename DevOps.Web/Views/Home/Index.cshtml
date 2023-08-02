@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Usuario>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="d-flex align-items-center justify-content-between w-100 ">
+    <h2>Usuários</h2>
+    <a class="btn btn-success" asp-action="Cadastro" asp-controller="Home">Cadastrar</a>
+</div>
+
+<div class="d-flex align-items-center justify-content-center table-responsive">
+    <table class="table table-striped w-100">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Sobrenome</th>
+                <th scope="col">Idade</th>
+                <th scope="col">Gênero</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var u in Model)
+            {
+                <tr>
+                    <th>@u.Id</th>
+                    <td>@u.Nome</td>
+                    <td>@u.Sobrenome</td>
+                    <td>@u.Idade</td>
+                    <td>@u.Genero</td>
+                    <td class="d-flex gap-2" style="flex-direction: row">
+                        <form class="col-auto p-0" asp-action="Edicao" asp-controller="Home">
+                            <input type="hidden" name="Id" value="@u.Id">
+                            <button type="submit" class="btn btn-primary my-1"><em class="bx bx-edit-alt"></em></button>
+                        </form>
+                        <form class="col-auto p-0" asp-action="Deletar" asp-controller="Home">
+                            <input type="hidden" name="Id" value="@u.Id">
+                            <button class="btn btn-danger my-1"><em class="bx bx-trash-alt"></em></button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

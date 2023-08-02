@@ -1,0 +1,45 @@
+﻿@{
+    var usuario = ViewBag.Usuario as Usuario;
+}
+
+<div class="container">
+    <h2>Cadastro de Usuário</h2>
+    <form asp-action="Cadastrar" asp-controller="Home">
+        <div class="mb-3">
+            <label for="inputNome" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="inputNome" name="Nome" placeholder="Digite o nome" value="@(usuario == null ? "" : usuario.Nome)" required>
+        </div>
+        <div class="mb-3">
+            <label for="inputSobrenome" class="form-label">Sobrenome</label>
+            <input type="text" class="form-control" id="inputSobrenome" name="Sobrenome" placeholder="Digite o sobrenome" value="@(usuario == null ? "" : usuario.Sobrenome)" required>
+        </div>
+        <div class="mb-3">
+            <label for="inputIdade" class="form-label">Idade</label>
+            <input type="number" class="form-control" id="inputIdade" name="Idade" placeholder="Digite a idade" value="@(usuario == null ? "" : usuario.Idade)" required>
+        </div>
+        <div class="mb-3">
+            <label for="inputGenero" class="form-label">Gênero</label>
+            <select class="form-select" id="inputGenero" name="Genero" required>
+                <option>Selecione uma opção</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Feminino">Feminino</option>
+                <option value="Outro">Outro</option>
+            </select>
+        </div>
+        <div class="d-flex justify-content-end w-100">
+            <button type="reset" class="btn btn-secondary">Limpar</button>
+            <button type="submit" class="btn btn-success ms-2">Cadastrar</button>
+        </div>
+    </form>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+@if (usuario != null)
+{
+    <script>
+        $(document).ready(function () {
+            $("#selectGenero").find("option[value='" + "@(usuario.Genero)" + "']").prop("selected", true);
+        });
+    </script>
+}
