@@ -76,7 +76,7 @@ namespace DevOps.Test.Core.FluentValidator
             Assert.Contains("Especifique o Nome do Usuário.", erros);
             Assert.Contains("Especifique o Sobrenome do Usuário.", erros);
             Assert.Contains("A Idade informada não é válida.", erros);
-            Assert.Contains("Especifique o Genêro do Usuário.", erros);
+            Assert.Contains("Especifique o Gênero do Usuário.", erros);
 
         }
     }
